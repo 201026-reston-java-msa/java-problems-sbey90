@@ -13,9 +13,13 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public String reverse(String string) {
-		
-		return "";
+	public static String reverse(String string) {
+		String input = "";
+		for(int i = string.length() - 1; i >= 0; i--) {
+			input += string.charAt(i);
+			System.out.println(input);
+		}
+		return input;
 	}
 
 	/**
@@ -26,9 +30,14 @@ public class EvaluationService {
 	 * @param phrase
 	 * @return
 	 */
-	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
+	public static String acronym(String phrase) {
+		String[] phraseChange = phrase.split("\\-|\\+|\\=|\\ |\\.|\\*|\\/");
+		StringBuilder str = new StringBuilder();
+		for(int i = 0; i < phraseChange.length; i++) {
+			str.append(phraseChange[i].charAt(0));
+			// Since the split is at " " this should begin the count at 0 after each space.
+		}
+		return str.toString().toUpperCase();
 	}
 
 	/**
@@ -80,18 +89,36 @@ public class EvaluationService {
 			this.sideThree = sideThree;
 		}
 
+		
+		// An equilateral triangle has all three sides the same length.
 		public boolean isEquilateral() {
-			// TODO Write an implementation for this method declaration
+			if((sideOne == sideTwo) && (sideOne == sideThree) && (sideTwo == sideOne) && (sideTwo == sideThree) && (sideThree == sideOne) && (sideThree == sideTwo)) {
+				return true;
+			}
 			return false;
 		}
 
+		
+		/*
+		 * An isosceles
+	 * triangle has at least two sides the same length. (It is sometimes specified
+	 * as having exactly two sides the same length, but for the purposes of this
+	 * exercise we'll say at least two.)
+		 */
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
+			if((sideOne == sideTwo) || (sideOne == sideThree) || (sideTwo == sideOne) || (sideTwo == sideThree) || (sideThree == sideOne) || (sideThree == sideTwo)) {
+				return true;
+			}
+			
 			return false;
 		}
-
+		
+		
+		// A scalene triangle has all sides of different lengths.
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
+			if((sideOne != sideTwo) && (sideOne != sideThree) || (sideTwo != sideOne) && (sideTwo != sideThree) || (sideThree != sideOne) && (sideThree != sideTwo)) {
+				return true;
+			}
 			return false;
 		}
 
@@ -112,10 +139,22 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+	public static int getScrabbleScore(String string) {
+		String[] choice = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+				"T", "U", "V", "W", "X", "Y", "Z" };
+		int[] points = { 1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10 };
+		// could refactor int array to match up with number of letters in alphabet with numerical options
+		int score = 0;
+		for (int i = 0; i < string.length(); i++) {
+			for (int j = 0; j < 26; j++) {
+				if ((string.substring(i, i + 1).equals(choice[j].toLowerCase()) || string.substring(i, i + 1).equals(choice[j].toUpperCase()))) {
+					score += points[j];
+				}
+			}	
+		}
+		return score;
 	}
+	
 
 	/**
 	 * 5. Clean up user-entered phone numbers so that they can be sent SMS messages.

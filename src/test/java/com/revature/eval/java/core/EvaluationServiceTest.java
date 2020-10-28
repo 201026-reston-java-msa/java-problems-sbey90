@@ -30,27 +30,27 @@ public class EvaluationServiceTest {
 	 * Question 1
 	 ******************************************************************/
 	@Test
-	public void testAnEmptyString() {
+	public void testAnEmptyString() { // passed
 		assertEquals("", evaluationService.reverse(""));
 	}
 
 	@Test
-	public void testAWord() {
+	public void testAWord() { // passed
 		assertEquals("tobor", evaluationService.reverse("robot"));
 	}
 
 	@Test
-	public void testACapitalizedWord() {
+	public void testACapitalizedWord() { // passed
 		assertEquals("nemaR", evaluationService.reverse("Ramen"));
 	}
 
 	@Test
-	public void testASentenceWithPunctuation() {
+	public void testASentenceWithPunctuation() { // passed
 		assertEquals("!yrgnuh m'I", evaluationService.reverse("I'm hungry!"));
 	}
 
 	@Test
-	public void testAPalindrome() {
+	public void testAPalindrome() { // passed
 		assertEquals("racecar", evaluationService.reverse("racecar"));
 	}
 
@@ -58,28 +58,28 @@ public class EvaluationServiceTest {
 	 * Question 2
 	 ******************************************************************/
 	@Test
-	public void basic() {
+	public void basic() { // passed
 		final String phrase = "Portable Network Graphics";
 		final String expected = "PNG";
 		assertEquals(expected, evaluationService.acronym(phrase));
 	}
 
 	@Test
-	public void punctuation() {
+	public void punctuation() { // passed
 		final String phrase = "First In, First Out";
 		final String expected = "FIFO";
 		assertEquals(expected, evaluationService.acronym(phrase));
 	}
 
 	@Test
-	public void NonAcronymAllCapsWord() {
+	public void NonAcronymAllCapsWord() { // passed
 		final String phrase = "GNU Image Manipulation Program";
 		final String expected = "GIMP";
 		assertEquals(expected, evaluationService.acronym(phrase));
 	}
 
 	@Test
-	public void punctuationWithoutWhitespace() {
+	public void punctuationWithoutWhitespace() { // passed
 		final String phrase = "Complementary metal-oxide semiconductor";
 		final String expected = "CMOS";
 		assertEquals(expected, evaluationService.acronym(phrase));
@@ -90,37 +90,37 @@ public class EvaluationServiceTest {
 	 ******************************************************************/
 
 	@Test
-	public void trianglesWithNoEqualSidesAreNotEquilateral() {
+	public void trianglesWithNoEqualSidesAreNotEquilateral() { // passed
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(5, 4, 6);
 		assertFalse(triangle.isEquilateral());
 	}
 
 	@Test
-	public void verySmallTrianglesCanBeEquilateral() {
+	public void verySmallTrianglesCanBeEquilateral() { // passed
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(0.5, 0.5, 0.5);
 		assertTrue(triangle.isEquilateral());
 	}
 
 	@Test
-	public void isoscelesTrianglesMustHaveAtLeastTwoEqualSides() {
+	public void isoscelesTrianglesMustHaveAtLeastTwoEqualSides() { // passed
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(2, 3, 4);
 		assertFalse(triangle.isIsosceles());
 	}
 
 	@Test
-	public void verySmallTrianglesCanBeIsosceles() {
+	public void verySmallTrianglesCanBeIsosceles() { // passed
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(0.5, 0.4, 0.5);
 		assertTrue(triangle.isIsosceles());
 	}
 
 	@Test
-	public void trianglesWithAllSidesEqualAreNotScalene() {
+	public void trianglesWithAllSidesEqualAreNotScalene() { // passed
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(4, 4, 4);
 		assertFalse(triangle.isScalene());
 	}
 
 	@Test
-	public void verySmallTrianglesCanBeScalene() {
+	public void verySmallTrianglesCanBeScalene() { // passed
 		EvaluationService.Triangle triangle = new EvaluationService.Triangle(0.5, 0.4, 0.6);
 		assertTrue(triangle.isScalene());
 	}
@@ -129,27 +129,27 @@ public class EvaluationServiceTest {
 	 * Question 4
 	 ******************************************************************/
 	@Test
-	public void testAValuableLetter() {
+	public void testAValuableLetter() { // passed
 		assertEquals(4, evaluationService.getScrabbleScore("f"));
 	}
 
 	@Test
-	public void testAShortValuableWord() {
+	public void testAShortValuableWord() { // passed
 		assertEquals(12, evaluationService.getScrabbleScore("zoo"));
 	}
 
 	@Test
-	public void testAMediumWord() {
+	public void testAMediumWord() { // passed
 		assertEquals(6, evaluationService.getScrabbleScore("street"));
 	}
 
 	@Test
-	public void testAMediumValuableWord() {
+	public void testAMediumValuableWord() { // passed
 		assertEquals(22, evaluationService.getScrabbleScore("quirky"));
 	}
 
 	@Test
-	public void testALongMixCaseWord() {
+	public void testALongMixCaseWord() { // passed
 		assertEquals(41, evaluationService.getScrabbleScore("OxyphenButazone"));
 	}
 
