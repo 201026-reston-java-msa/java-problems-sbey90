@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -187,10 +188,27 @@ public class EvaluationService {
 	 * Note: As this exercise only deals with telephone numbers used in
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
-	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
+	
+	// Still fails last test -- will come back
+	
+	public static String cleanPhoneNumber(String string) {
+		String s1 = string.replaceAll("\\D+", "");
+		
+		for(int i = 0; i < s1.length(); i++) {
+			if(s1.length() == 11) {
+				s1 = s1.substring(1);
+			} else if(s1.length() > 11) {
+				throw new IllegalArgumentException("IllegalArgumentException");
+			}
+		}
+			return s1;
+	} 
+	
+	/*public static String cleanPhoneNumber(String string) {
+		String s1 = string.replaceAll("\\D+", "");
+		//String s2 = s1.substring(0, 11);
+			return s1;
+	} */
 
 	/**
 	 * 6. Given a phrase, count the occurrences of each word in that phrase.
@@ -201,9 +219,19 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public Map<String, Integer> wordCount(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+	public static Map<String, Integer> wordCount(String string) {
+		String[] arr = string.split("[\\r\\n\\W]+");
+		Map<String, Integer> map = new HashMap();
+		for(String word : arr) {
+			int count = 0;
+			for(String words : arr ) {
+				if(word.equals(words)) {
+					count++;
+				}
+				map.put(word, count);
+			}
+		}
+		return map;
 	}
 
 	/**

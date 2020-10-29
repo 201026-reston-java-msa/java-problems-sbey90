@@ -1,27 +1,33 @@
 package com.revature.eval.java.core;
 
+
+
 public class DriverTest {
 
 	public static void main(String[] args) {
+		
+		
 
-		System.out.println(getScrabbleScore("HELLO"));
+		System.out.println(cleanPhoneNumber("(313) 273-8ab*    !066-89631"));
 
 	}
 
-	public static int getScrabbleScore(String string) {
-		String[] choice = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
-				"T", "U", "V", "W", "X", "Y", "Z" };
-		int[] points = { 1, 3, 3, 2, 1, 4, 2, 4, 1, 8, 5, 1, 3, 1, 1, 3, 10, 1, 1, 1, 1, 4, 4, 8, 4, 10 };
-		// could refactor int array to match up with number of letters in alphabet with numerical options
-		int score = 0;
-		for (int i = 0; i < string.length(); i++) {
-			for (int j = 0; j < 26; j++) {
-				if ((string.substring(i, i + 1).equals(choice[j].toLowerCase()) || string.substring(i, i + 1).equals(choice[j].toUpperCase()))) {
-					score += points[j];
-				}
-			}	
+	
+	public static String cleanPhoneNumber(String string) {
+		String s1 = string.replaceAll("\\D+", "");
+		
+		for(int i = 0; i < s1.length(); i++) {
+			if(s1.length() == 11) {
+				s1 = s1.substring(1);
+			} else if(s1.length() > 11) {
+				throw new IllegalArgumentException("IllegalArgumentException");
+			}
 		}
-		return score;
-	}
+		//String s2 = s1.substring(0, 11);
+			return s1;
+		
+	} 
 
+	
+	
 }
